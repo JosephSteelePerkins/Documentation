@@ -1,0 +1,123 @@
+DevLookup1
+
+=MATCH(J2,INDIRECT("Calendar!"&Calendar!$B$15&L2&":CC"&L2,1))
+
+first define an array on the Calendar workbook from the following cell references:
+The column that hold the current date ie Calendar!$B$15
+The "running total row" for the developer ie L2
+A randomly large column reference ie CC
+Again the row for the developer 
+
+second look for the position in the array of the first cell that is the value just before it so for 20 the 
+below would return 3
+
+E	F	G	H	I
+14-Feb	15-Feb	18-Feb	19-Feb	20-Feb
+6	6	6	6	6
+6	12	18	24	30
+
+
+Dev finishes
+
+=INDIRECT("Calendar!"&SUBSTITUTE(ADDRESS(1,N2+Calendar!$B$14,4),"1","")&"1")
+gets the column name of the cell after ie H
+
+get the date of the column to the right of the one just before the estimated time remaining ie the actual
+day the work will be completed on eg in above example 19-Feb
+
+Number of hours
+
+=J2-INDIRECT("calendar!"&SUBSTITUTE(ADDRESS(1,(N2-1)+Calendar!$B$14,4),"1","")&L2)
+
+Gets the value of the cell just before the Dev finishes data and subtracts from the estimated time remaining. This gives the number of hours on that day will be needed to complete the work.
+
+
+Test this scenerio
+
+- estimated time remaining = 24
+
+14-Feb	15-Feb	18-Feb	19-Feb
+6	6	6	6
+6	12	18	24
+
+- returns 19-Feb when really it is the 18-Feb. This is because the match is looking for the largest values smaller or EQUAL to. So is finding 24
+
+
+What determines when a test is planned to finish
+
+The date the dev is planned to finish, taking into account hours
+The testers availablity according to the calendar
+The estimated time the testing will take
+
+example 1
+
+Test estimate = 5 hours
+Tester availability 
+
+14-Feb	15-Feb	18-Feb	19-Feb
+3	3	0	3
+
+Dev due to complete on 14-Feb
+Hours = 2
+
+This is how the running total needs to be calculated from the completion 
+
+14-Feb	15-Feb	18-Feb	19-Feb
+3	3	0	3
+3	6	6	9
+
+Then find the estimate in the running total BUT first add the extra dev hours so 5 hours becomes 7 hours
+So completion is 19-Feb
+
+example 2
+
+Test estimate = 5 hours
+Tester availability 
+
+14-Feb	15-Feb	18-Feb	19-Feb
+3	3	0	3
+	3	3	6
+
+Dev due to complete on 15-Feb
+Hours = 0 (ie is completed by the beginning of the day.)
+
+So, running total starts at dev date, add the extra dev hours to the estimate but this is 0 so 5 hours
+So completed by 19-Feb
+
+TestLookup1
+
+Find in the array created on this workbook the first value that is higher than the estimated test time. This returns the position in the array
+
+TestLookup2
+
+Now look up the date. Convert the column the date is in to a number, add TestLookup1 then convert back to column
+
+Test end date
+
+
+
+
+
+Test running total
+
+Sum an array that is defined as follows:
+The column that holds the test date 
+
+=SUM(INDIRECT("Calendar!"&$R2&$M2&""):INDIRECT("Calendar!"&$R2&$M2&""))
+J8:J8
+Then the next one has to be one along
+J8:K8
+
+First get the column number of the test date and add 1
+=COLUMN(INDIRECT("Calendar!"&$R2&$M2&""))+1
+
+Then convert to column address
+=SUBSTITUTE(ADDRESS(1,COLUMN(INDIRECT("Calendar!"&$R2&$M2&""))+1,4),1,"")
+
+Then put it in the whole bloody thing
+=SUM(INDIRECT("Calendar!"&$R2&$M2&""):INDIRECT("Calendar!"&SUBSTITUTE(ADDRESS(1,COLUMN(INDIRECT("Calendar!"&$R2&$M2&""))+1,4),1,"")&$M2&""))
+
+
+How is number of hours calculated?
+
+It is accumulated number of hours at the end of the day the dev will be completed on. Minuse the estimated hours.
