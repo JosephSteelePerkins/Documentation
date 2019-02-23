@@ -1,0 +1,22 @@
+asdfadscat foodasdf
+<htm5>
+nov november
+1000 99,9
+
+set(value|val)? - matches all these three
+
+set
+setvalue
+setval
+
+
+This is a <EM>first</EM> test
+
+I want to be able to match <canvas but not <canvasJoe. How do I do that?
+
+What does this match to  ?
+
+[^>] - is a negated character class and is looking for any character that is not a >
+[^>]+ - the plus will make it select as many characters in the string that are not >
+[^>]+> - will also include the > itself
+<[^>]+> - will mean string has to start with <
