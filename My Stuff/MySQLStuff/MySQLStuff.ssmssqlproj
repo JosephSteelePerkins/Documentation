@@ -15,6 +15,18 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
+        <ConnectionNode Name="DESKTOP-CGRB0T0\DEVELOPMENT2:DESKTOP-CGRB0T0\User">
+          <Created>2019-03-02T20:08:39.4680694+00:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-CGRB0T0\DEVELOPMENT2</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
@@ -25,17 +37,23 @@
           <AssociatedConnUserName />
           <FullPath>Bulk Insert.sql</FullPath>
         </FileNode>
-        <FileNode Name="DiamondDW.sql">
+        <FileNode Name="ColumnStore index.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>DiamondDW.sql</FullPath>
+          <FullPath>ColumnStore index.sql</FullPath>
         </FileNode>
         <FileNode Name="ErrorLogging.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>ErrorLogging.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Filtered nonclustered index - in progress.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Filtered nonclustered index - in progress.sql</FullPath>
         </FileNode>
         <FileNode Name="FullText - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
@@ -49,17 +67,59 @@
           <AssociatedConnUserName />
           <FullPath>Hierarchical Nodes.sql</FullPath>
         </FileNode>
+        <FileNode Name="Indexed Views.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Indexed Views.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MAXDOP.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>MAXDOP.sql</FullPath>
+        </FileNode>
+        <FileNode Name="My DW scratch.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\DEVELOPMENT2:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\DEVELOPMENT2</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>My DW scratch.sql</FullPath>
+        </FileNode>
+        <FileNode Name="My DW Script.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\DEVELOPMENT2:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\DEVELOPMENT2</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>My DW Script.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Numbers with decimal parts.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Numbers with decimal parts.sql</FullPath>
+        </FileNode>
         <FileNode Name="RegEx - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>RegEx - done.sql</FullPath>
         </FileNode>
+        <FileNode Name="Sequence - done.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Sequence - done.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLCMD - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLCMD - done.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Windows function.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Windows function.sql</FullPath>
         </FileNode>
         <FileNode Name="XML - select.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>

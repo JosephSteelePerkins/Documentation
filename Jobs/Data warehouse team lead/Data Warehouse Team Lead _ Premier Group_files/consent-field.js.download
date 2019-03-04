@@ -1,0 +1,285 @@
+/* Adding Consent fields */
+
+
+$(document).ready(function(){
+
+  /* English */
+    var consent_text = "<iframe src='"+DynamicData(3)+"'></iframe>"; 
+    if ((window.location.pathname=="/member/createjobalert.aspx") || (window.location.pathname=="/member/register.aspx")) 
+    {   
+            
+        $("<div class='consent-text-div'>"+consent_text+"</div>").insertAfter('.customPrivacySettings')
+       // $("<div class='privacy-text-div'><input id='privacy-check-box' type='checkbox'/> <label>By ticking this box I confirm I have read and agree with the <a href='"+DynamicData(1)+"' target='_blank'>Privacy Policy</a>.<span class='req-field-text'>*</span></label></div>").insertBefore('.buttonHolder');
+       // $("<div class='tandc-text-div'><input id='tandc-check-box' type='checkbox'/> <label>By ticking this box I confirm I have read and agree with this website's<a href='"+DynamicData(2)+"' target='_blank'> terms and conditions</a>.<span class='req-field-text'>*</span></label></div>").insertBefore('.buttonHolder');
+       /* var saveBtn = $(".buttonHolder .mini-new-buttons");
+        var svbtnSubmit = saveBtn.attr("onclick");
+        if (window.location.origin=="https://www.prsjobs.com" && window.location.pathname=="/member/register.aspx")
+        {
+            // special case
+            document.getElementById("btnSubmit").setAttribute("type","button");
+        }
+        else { // for all other OK sites
+            saveBtn.attr("type","button"); 
+        }
+        
+        
+        saveBtn.attr("onclick","isConsented(this,'"+svbtnSubmit+"');");*/
+        if (window.location.pathname=="/member/createjobalert.aspx"){
+          $("<div class='marketing-text-div'><input id='marketing-check-box' type='checkbox'/> <label>I would like to receive news, marketing emails and other relevant content by email. </label></div>").insertBefore('.buttonHolder');
+        }
+        
+    }
+
+    
+    if(window.location.pathname.indexOf('/applyjob') > -1){
+     // $("<div class='tandc-text-div'><input id='tandc-check-box' type='checkbox'/> <label>By ticking this box I confirm I have read and agree with this website's<a href='"+DynamicData(2)+"' target='_blank'> terms and conditions</a>.<span class='req-field-text'>*</span></label></div>").insertAfter('#divNewsletter');    
+     // $("<div class='privacy-text-div'><input id='privacy-check-box' type='checkbox'/> <label>By ticking this box I confirm I have read and agree with the <a href='"+DynamicData(1)+"' target='_blank'>Privacy Policy</a>.<span class='req-field-text'>*</span></label></div>").insertAfter('#divNewsletter');
+      $("<div class='consent-text-div'>"+consent_text+"</div>").insertAfter('.customPrivacySettings');
+      
+      
+      /*$("#apply").click(function(){
+         if(document.getElementById("consent-check-box").checked==false || document.getElementById("tandc-check-box").checked==false || document.getElementById("privacy-check-box").checked==false)
+         {
+            $("<p class='req-field-text'>* Please fill the required fields.</p>").insertAfter('.justapply-wrapper');
+            return false; 
+        } 
+      });  */ 
+
+    }
+
+    if(window.location.pathname.indexOf("/privacy-policy-consent") > -1){
+      $("body").css('padding-top','20px');
+    }
+
+  });
+  /* Adding Consent fields */
+  /* function isConsented(element,event)
+    {
+        if (document.getElementById("consent-check-box").checked==false || document.getElementById("tandc-check-box").checked==false || document.getElementById("privacy-check-box").checked==false)
+        {
+           $("<p class='req-field-text'>* Please fill the required fields.</p>").insertBefore('.buttonHolder');
+        }
+        else {
+            element.setAttribute("type","submit");
+            window.location.href=event;
+        }
+    }*/
+function DynamicData(OPT)
+{
+  // OPT 1 - privacy policy link
+  // OPT 2 - terms and conditions
+  // OPT 3 - Consent iframe
+  var local_URL=window.location.origin;
+  switch (local_URL)
+  {
+    case "https://www.cognitive-group.com":
+      if (OPT==1) {return "/page/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/page/cookie-policy/";}
+      break;
+
+      case "https://www.conceptresourcing.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.highams.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.lrlegalrecruitment.co.uk":
+      if (OPT==1) {return "/page/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.careers.unit4.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/privacy-policy";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.prsjobs.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.nakamaglobal.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.aap3recruitment.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.remithq.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.velocitygroupltd.co.uk":
+      if (OPT==1) {return "/page/privacy-policy";}
+      else if (OPT==2) {return "/page/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.technicalresources.co.uk":
+      if (OPT==1) {return "/page/privacy-policy/";}
+      else if (OPT==2) {return "/page/terms-and-conditions/";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.syntechrecruitment.co.uk":
+      if (OPT==1) {return "/page/gdpr-privacy-policy/";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.spencer-rose.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.satellitetalent.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.cbresourcing.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.centaurmobile.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.classpeople.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.amida-recruit.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.jobs.gm-fashioncareer.com":
+      if (OPT==1) {return "https://gm-fashioncareer.com/privacy-policy/";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.ikasinternational.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/page/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.knownfour.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.luap.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.maxwellbond.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.nowcareers.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.rps-recruitment.com":
+      if (OPT==1) {return "/page/privacy-policy/";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.oscarharrington.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.coreatlantic.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.giveagradago.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-agreement";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.noweducation.co.uk":
+      if (OPT==1) {return "/privacy-and-cookie-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.forwardthinkingpersonnel.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.pointviewresources.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-and-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.investigo.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.premiergroupuk.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-conditions";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.preciseconsultants.co.uk":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+
+      case "https://www.thinkitrecruitment.com":
+      if (OPT==1) {return "/privacy-policy";}
+      else if (OPT==2) {return "/terms-of-use";}
+      else if (OPT==3) {return "/privacy-policy-consent";}
+      break;
+  }
+}

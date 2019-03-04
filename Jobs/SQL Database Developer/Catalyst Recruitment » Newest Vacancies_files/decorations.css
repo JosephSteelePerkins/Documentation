@@ -1,0 +1,183 @@
+#decorations {
+	background:url(../images/treasure-hunt/decorations.png);
+	width:904px;
+	height:439px;
+	position: relative;
+}
+
+#decorations div {
+	position:absolute;
+}
+
+#decorations img:hover {
+	cursor:hand;
+    -webkit-transform: rotate(10deg) scale(1.2); /* Chrome 4+, Op 15+, Saf 3.1, iOS Saf 3.2+ */
+       -moz-transform: rotate(10deg) scale(1.2); /* Fx 3.5-15 */
+        -ms-transform: rotate(10deg) scale(1.2); /* IE 9 */
+         -o-transform: rotate(10deg) scale(1.2); /* Op 10.5-12 */
+            transform: rotate(10deg) scale(1.2); /* Fx 16+, IE 10+ */
+}
+
+#decorations img {
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+}
+
+#decorations a {
+	display:block;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+}
+
+#decorations a.selected {
+	background-color:rgba(255, 0, 0, 0.3);
+}
+
+#treasure_hunt_xmas_form {
+	width:1055px;
+	height:509px;
+	background:url(../images/treasure-hunt/ticket.jpg);
+}
+
+#treasure_hunt_xmas_form h3, #treasure_hunt_xmas_form h1 {
+	color:#dc3a2f;
+	font-family:Georgia, serif;
+	font-style: italic;
+	margin:0.5em 0;
+}
+
+#treasure_hunt_xmas_form form {
+	padding:100px 40px 0 150px;
+}
+
+#treasure_hunt_xmas_form input {
+	font-size:15px;
+}
+
+#treasure_hunt_xmas_form input.submit {
+	background-color:#dc3a2f;
+	border-color:#dc3a2f;
+}
+
+#number_01 {
+	top:50px;
+	left:46px;
+}
+
+#number_02 {
+	top:68px;
+	left:120px;
+}
+
+#number_03 {
+	top:68px;
+	left:185px;
+}
+
+#number_04 {
+	top:68px;
+	left:252px;
+}
+
+#number_05 {
+	top:80px;
+	left:323px;
+}
+
+#number_06 {
+	top:80px;
+	left:403px;
+}
+
+#number_07 {
+	top:68px;
+	left:467px;
+}
+
+#number_08 {
+	top:80px;
+	left:539px;
+}
+
+#number_09 {
+	top:68px;
+	left:609px;
+}
+
+#number_10 {
+	top:68px;
+	left:667px;
+}
+
+#number_11 {
+	top:59px;
+	left:746px;
+}
+
+#number_12 {
+	top:50px;
+	left:824px;
+}
+
+#number_13 {
+	top:290px;
+	left:35px;
+}
+
+#number_14 {
+	top:308px;
+	left:109px;
+}
+
+#number_15 {
+	top:308px;
+	left:173px;
+}
+
+#number_16 {
+	top:308px;
+	left:240px;
+}
+
+#number_17 {
+	top:315px;
+	left:323px;
+}
+
+#number_18 {
+	top:315px;
+	left:393px;
+}
+
+#number_19 {
+	top:308px;
+	left:459px;
+}
+
+#number_20 {
+	top:321px;
+	left:528px;
+}
+
+#number_21 {
+	top:321px;
+	left:595px;
+}
+
+#number_22 {
+	top:312px;
+	left:667px;
+}
+
+#number_23 {
+	top:321px;
+	left:746px;
+}
+
+#number_24 {
+	top:303px;
+	left:817px;
+}

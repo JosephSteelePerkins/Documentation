@@ -1,0 +1,41 @@
+#top ul {
+	clear:both;
+	width:864px;
+	height:30px;
+	background-color:#060542;
+	margin:0;
+	padding:12px 0 0 40px;
+	list-style:none;
+}
+
+#top ul#sub_nav {
+	height:26px;
+	background-color:#4A4976;
+	padding:8px 0 0 40px;
+}
+
+#top ul li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+
+#top ul li a {
+	padding:0.5em 1em;
+	color:#8E8DA9;
+	font-size:14px;
+	text-decoration:none;
+}
+
+#top ul#sub_nav li a {
+	font-size:13px;
+}
+
+#top ul#sub_nav li a {
+	color:#BBBBCB;
+}
+
+#top ul li a.selected, #top ul li a:hover, 
+#top ul#sub_nav li a.selected, #top ul#sub_nav li a:hover {
+	color:#fff;
+}

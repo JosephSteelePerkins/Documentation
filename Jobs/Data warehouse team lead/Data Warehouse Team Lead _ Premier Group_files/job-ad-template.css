@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet");
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600,700italic,700,600italic,400italic,300italic' rel='stylesheet");
+
+/* Adjust:
+	border colour, 
+	horizontal padding (#job-ad-header, #job-ad-content, #job-ad-footer), 
+	vertical margin (.job-ad-part), 
+	header and footer background images, 
+	copy styling for header and anchor tags, generic fonts and line heights.
+*/
+
+#job-ad-template *
+{
+	margin: 0;
+	padding: 0;
+	border-width: 0;
+	
+	font: inherit;
+	text-align: left;
+	outline: 0;
+}
+#job-ad-template
+{
+	overflow: hidden;
+	float: left;
+	width: 458px;
+	border: solid 1px #333; /* border colour here */
+	
+	border-radius: 0;
+	/* generic font styling here */
+	font-size: 15px;
+	line-height: 1.5;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	color: #333;
+}
+#job-ad-template.job-ad-mickey
+{
+	width: 536px;
+}
+#job-ad-template a
+{
+	text-decoration: none;
+	color: #faa21d;
+}
+#job-ad-template a:hover, 
+#job-ad-template a:focus, 
+#job-ad-template a:active
+{
+	text-decoration: none;
+	color: #333;
+}
+#job-ad-template p
+{
+	margin: 0 0 1.5em 0;
+}
+#job-ad-template ul
+{
+	padding: 0 0 0 18px;
+	margin: 0 0 1.5em 0;
+
+	list-style: disc;
+}
+#job-ad-template ol
+{
+	padding: 0 0 0 24px;
+	margin: 0 0 1.5em 0;
+}
+#job-ad-template ol li
+{
+	padding: 0;
+	margin: 0;
+}
+#job-ad-template ul li
+{
+	display: list-item;
+	padding: 0;
+	margin: 0;
+	
+	list-style: disc;
+}
+#job-ad-template li:before
+{
+	display: none;
+}
+#job-ad-template #job-ad-content
+{
+	padding: 1em 1.5em; /* horizontal padding  here*/
+}
+#job-ad-template .job-ad-part
+{
+	margin: 1.5em 0; /* vertical margin here */
+}
+#job-ad-template #job-ad-header
+{
+	overflow: hidden;
+	position: relative;
+	padding: 1.5em;
+
+	background: #fff;
+    border-bottom: 1px solid #333;
+}
+/*#job-ad-template.has-logo-0 #job-advertiser-logo
+{
+	display: none;
+}*/
+#job-ad-template #job-advertiser-logo
+{
+	position: relative;
+	z-index: 10;
+	float: right;
+
+	width:221px;
+	height:50px;
+    background-image: url(../images/logo.png) !important;
+	background-repeat: no-repeat;
+	background-position: right 50%;
+	background-size: auto 100%;
+}
+#job-ad-template #job-ad-title h1
+{
+	position: relative;
+	z-index: 10;
+
+	padding: 0;
+	border: 0;
+	margin: 0;
+	
+	/* copy and paste styles from h3 here */
+	line-height: 1.2;
+	font-size: 30px;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: #414042;
+}
+#job-ad-template .job-ad-option
+{
+	display: table-row;
+}
+#job-ad-template .job-ad-optional-heading, 
+#job-ad-template .job-ad-optional-text
+{
+	display: table-cell;
+	vertical-align: top;
+}
+#job-ad-template .job-ad-optional-heading
+{
+	padding: 0 1em 0 0;
+	font-weight: 700;
+}
+#job-ad-template .job-ad-optional-text div
+{
+	display: inline-block;
+}
+#job-ad-template #job-ad-footer a
+{
+	display: block;
+	padding: 0.5em 0;
+	
+	text-align: center;
+	background: #333;
+	color: #fff;
+}
+#job-ad-template #job-ad-footer a:hover, 
+#job-ad-template #job-ad-footer a:focus, 
+#job-ad-template #job-ad-footer a:active
+{
+	background: #FBB731;
+	color: #fff;
+}
+
+@media screen and (max-width: 599px) {
+
+	#job-ad-template #job-ad-title h1
+	{
+		font-size: 20px;
+	}
+	
+	#job-ad-template .job-ad-option
+	{
+		margin: 0.5em 0;
+	}
+	#job-ad-template .job-ad-option, 
+	#job-ad-template .job-ad-optional-heading, 
+	#job-ad-template .job-ad-optional-text, 
+	#job-ad-template .job-ad-optional-text div
+	{
+		display: block;
+	}
+
+}
+@media screen and (max-width: 479px) {
+
+	#job-ad-template #job-ad-header h2
+	{
+		margin-bottom: 0.5em;	
+	}
+	#job-ad-template #job-ad-header h2, 
+	#job-ad-template #job-advertiser-logo 
+	{
+		float: none;
+		width: auto;
+	}
+#job-ad-template #job-advertiser-logo
+    {
+        background-position: left 50%;
+    }
+}
+

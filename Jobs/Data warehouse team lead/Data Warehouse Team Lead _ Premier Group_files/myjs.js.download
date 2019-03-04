@@ -1,0 +1,505 @@
+!(function($) {
+    // regular js
+    function formatDate(myDate) {
+        var monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var myDay = "<span class='rss-item-pubDate-date'>" + myDate.getUTCDate() + "</span> ";
+        var myMonth = "<span class='rss-item-pubDate-month'>" + monthList[myDate.getUTCMonth()] + "</span> ";
+        var myYear = "<span class='rss-item-pubDate-full-year'>" + myDate.getUTCFullYear() + "</span> ";
+        return myDay + "<br>" + myMonth;
+    }
+    // jquery
+    $(function() {
+        $('link[href*="/COMMON/newdash/lib/bootstrap.min.css"]').remove();
+        if ($('#site-topnav .user-loggedIn').length) {
+            $('a#HiddenMemLog').prop("href", "/member/default.aspx").text('My Dashboard');
+        }
+        var currentPage = window.location.pathname.toLowerCase();
+   
+        // remove empty li's on the system pages.
+        $("#side-left li:empty").remove();
+        // remove empty left side bar
+        if ($('#prefix_left-navigation').children().length == 0) {
+            $('#prefix_left-navigation').remove();
+        }
+        if ($('#side-left').children().length == 0) {
+            $('#side-left').remove();
+        }
+        /* Adding Bootstrap Classes */
+        $('#dynamic-container, #content-container, #job-dynamic-container').addClass('container');
+        $('#dynamic-side-right-container, #job-side-column, #side-right').addClass('hidden-xs hidden-sm hidden-md hidden-lg');
+        if (!$.trim($('#dynamic-side-left-container, #side-left').html()).length) {
+            $('#dynamic-content, #content-container #content').addClass('col-xs-12');
+        } else {
+            $('#dynamic-side-left-container, #side-left').addClass('col-sm-3 hidden-xs');
+            $('#dynamic-content, #content-container #content').addClass('col-sm-9 col-xs-12');
+        }
+        $('#job-dynamic-container #content').addClass('col-xs-12');
+        // form elements style
+        $('input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=reset]):not([type=file]):not([type=image]):not([type=date]), select, textarea').addClass('form-control');
+        $('input[type=text]').addClass('form-control');
+        $('input[type=submit]').addClass('btn btn-primary');
+        $('.mini-new-buttons').addClass('btn btn-primary');
+        $('input[type=reset]').addClass('btn btn-default');
+        // Repsonsive image
+        $('.dynamic-content-holder img').addClass('img-responsive');
+        // Responsive table
+        $('.dynamic-content-holder table, .content-holder table').addClass('table table-bordered').wrap('<div class="table-responsive"></div>');
+        // Convert top menu to Boostrap Responsive menu
+        $('.navbar .navbar-collapse > ul').addClass('nav navbar-nav');
+        $('.navbar .navbar-collapse > ul > li').has('ul').addClass('dropdown');
+        $('.navbar .navbar-collapse > ul > li.dropdown > a').addClass('disabled');
+        $('.navbar .navbar-collapse > ul > li.dropdown').append('<a id="child-menu"></a>');
+        $('.navbar .navbar-collapse > ul > li.dropdown > a#child-menu').append('<b class="caret"></b>').attr('data-toggle', 'dropdown').addClass('dropdown-toggle');
+        $('.navbar .navbar-collapse > ul > li > ul').addClass('dropdown-menu');
+        // add placeholder for search widget text field
+        $('#keywords1').attr('placeholder', 'Keywords search');
+        // add active class to links.
+        $("li a[href='" + window.location.pathname.toLowerCase() + "']").parent().addClass("active");
+        $("li.active li.active").parent().closest("li.active").removeClass("active");
+        // add last-child class to navigation
+        $("#prefix_navigation > ul > li:last").addClass("last-child");
+        // add btn style
+        $(".backtoresults a").addClass("btn btn-default");
+        $(".apply-now-link a").addClass("btn btn-primary");
+        $(".job-navbtns a").addClass("btn btn-default");
+        //.left-hidden show
+        if ((document.URL.indexOf("/advancedsearch.aspx") >= 0)) {
+            $(".left-hidden").css("display", "block");
+        }
+        if ((document.URL.indexOf("/advancedsearch.aspx?") >= 0)) {
+            $(".left-hidden").css("display", "none");
+        }
+        if ((document.URL.indexOf("/member/createjobalert.aspx") >= 0)) {
+            $(".left-hidden").css("display", "block");
+        }
+        if ((document.URL.indexOf("/member/login.aspx") >= 0)) {
+            $(".left-hidden").css("display", "block");
+        }
+        if ((document.URL.indexOf("/member/register.aspx") >= 0)) {
+            $(".left-hidden").css("display", "block");
+        }
+        // Contact - Google map
+        $("#footer").prepend($("#contact-map"));
+        // generate select navigation from sidebar Dynamic menu
+        $("#dynamic-content").convertNavigation({
+            title: "Related Pages",
+            links: "#site-topnav .navbar-nav li.active a:not([data-toggle=dropdown])"
+        });
+        // generate actions button on Job Listing page
+        $(".job-navbtns").convertButtons({
+            buttonTitle: "Actions&hellip;",
+            title: "Please choose&hellip;",
+            links: ".job-navbtns a"
+        });
+        // generate filters button on Job Listing page
+        $(".job-navbtns").convertFilters({
+            buttonTitle: "Filters&hellip;",
+            filteredTitle: "Applied Filters",
+            title: "Please choose&hellip;",
+            filtered: ".search-query p",
+            list: "ul#side-drop-menu",
+            excludeFromList: "#AdvancedSearchFilter_PnlCompany"
+        });
+        /* System Page Forms */
+        if (currentPage == "/member/createjobalert.aspx") {
+            setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ucJobAlert1$ddlProfession\',\'\')', 0);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                $('.alternate > li > select, #ctl00_ContentPlaceHolder1_ucJobAlert1_txtSalaryLowerBand, #ctl00_ContentPlaceHolder1_ucJobAlert1_txtSalaryUpperBand').addClass('form-control');
+                $('#ctl00_ContentPlaceHolder1_ucJobAlert1_ddlProfession, #ctl00_ContentPlaceHolder1_ucJobAlert1_ddlRole, #ctl00_ContentPlaceHolder1_ucJobAlert1_ddlLocation, #ctl00_ContentPlaceHolder1_ucJobAlert1_lstBoxArea, #ctl00_ContentPlaceHolder1_ucJobAlert1_ddlSalary').addClass('form-control');
+            });
+        }
+        $(document).ajaxComplete(function() {
+            $('#divRoleID1 > select, #divAreaDropDown1 > div > select').addClass('form-control');
+            $('#divRoleID > select, #divAreaDropDown > div > select').addClass('form-control');
+        });
+        $('#salaryID').change(function() {
+            $(document).ajaxComplete(function() {
+                $('#divSalaryFrom > input').addClass('form-control');
+                $('#divSalaryTo > input').addClass('form-control');
+            });
+        });
+
+        function SalaryFromChange1() {
+            $(document).ajaxComplete(function() {
+                $('#divSalaryTo1 > input').addClass('form-control');
+                $('#divSalaryFrom1 > input').addClass('form-control');
+            });
+        }
+        if (currentPage == "/member/register.aspx") {
+            $(".uniForm").addClass("border-container");
+        }
+        if (currentPage == "/member/createjobalert.aspx") {
+            $(".uniForm").addClass("border-container");
+        }
+		if (currentPage == "/press") {
+			$('#prefix_left-navigation').append($('#twitter-tweets').html());
+		}
+		if (currentPage == "/news.aspx") {
+			$('#side-left .jxt-news-filter-container .jxt-news-filter-refinements').append($('#twitter-tweets').html());
+		}
+		
+    });
+    // Resize action
+    /*$(window).on('resize', function() {
+
+        var wi = $(this).width();
+
+        // Mobile & Tablet
+        if ( wi <= 992 ) {
+            //$('#dynamic-side-left-container').before($('#dynamic-content'));
+            //$('#side-left').before($('#content'));
+            $('.navbar .navbar-collapse > ul > li.dropdown > a').removeAttr('class');
+        }
+        //  Desktop
+        else {
+            //$('#dynamic-side-left-container').after($('#dynamic-content'));
+            //$('#side-left').after($('#content'));
+            $('.navbar .navbar-collapse > ul > li.dropdown > a').addClass('disabled');
+        }
+
+    });*/
+    $(document).ready(function() {
+        $(".consultant-inner .social-media a[href=''], .consultant-inner .social-media a[href='mailto:'],.consultant-inner .social-media a[href='tel:']").hide();
+        //testimonial-section
+        $('.testiomonial-section .owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoHeight: true,
+                nav:true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            })
+
+        //testimonial-section
+        $('.client-logo-slider .owl-carousel').owlCarousel({
+                loop: true,
+
+                autoplay: true,
+                autoHeight: true,
+                nav:true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                     480: {
+                        items: 2,
+                        margin:10
+                    },
+                    1000: {
+                        items:4,
+                        margin:30,
+                    }
+                }
+            })
+
+
+          $('.bullet-slider .owl-carousel').owlCarousel({
+                loop: true,
+
+                autoplay: false,
+                autoHeight: true,
+                nav:true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                     480: {
+                        items: 1,
+                        margin:10
+                    },
+                    1000: {
+                        items:1,
+                        margin:30,
+                    }
+                }
+            })
+
+
+
+        $('.assessment-slider .owl-carousel').owlCarousel({
+                loop: true,
+
+                autoplay: true,
+                autoHeight: true,
+                nav:true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    1000: {
+                        items:2,
+                        margin:30,
+                    }
+                }
+            })
+        //inner banner js
+           var pageTitle = window.location.pathname.replace("/", "");
+            if (pageTitle != "") {
+                $("body").addClass(pageTitle);
+            }
+        //heading on banner
+        $('.dynamic-content-holder h1:first').appendTo($('.inner-banner .inner-title'));
+$('#content-container #content h1:first').appendTo($('.inner-banner .inner-title'));
+            //dynamic news or testimonials
+            // Latest News widget
+        $(".latest-news ul").each(function() {
+            var dataURL = $(this).attr("data-url");
+            $(this).includeFeed({
+                baseSettings: {
+                    rssURL: [dataURL || "/newsrss.aspx" ],
+                    limit:200,
+                },
+                templates: {
+                    itemTemplate: "<li class='rss-item' id='rss-item-{{item-index}}'><span class='rss-item-title'><a target='_blank' href='{{link}}'>{{title}}</a></span><span class='rss-item-pubDate'>[[pubDateTemplate]]</span><span class='rss-item-description'>{{description}}</span><a href='{{link}}' class='mini-new-buttons btn btn-primary' title='Read More'>Read More</a></li>",
+                    pubDateTemplate: "{{pubDate}}"
+                },
+            });
+        });
+
+        //contact us
+        // add iframe url for a map
+		function loadMap(iframeObject)
+		{
+			// if the iframe has no src or a blank src, and it has a data-src attribute
+			if ( !(iframeObject.attr("src") && iframeObject.attr("src").length) && iframeObject.attr("data-src") )
+			{
+				iframeObject.attr("src", iframeObject.attr("data-src"));
+			}
+		}
+		// scroll to a map
+		function scrollToDiv(divID)
+		{
+			$("html, body").animate({
+				scrollTop: $(divID).offset().top - ( $("#Top-nav-sticky").height() || 0 ) - 20
+			}, 200);
+		}
+		// if a location hash is on the url, add active to the div.
+		if ( location.hash && $(location.hash + ".r27_map").length )
+		{
+			$(location.hash + ".r27_map").addClass("active");
+		}
+		else
+		{
+			// otherwise, just make the first map active.
+			$(".r27_map:first").addClass("active");
+		}
+		loadMap($(".r27_map.active iframe"));
+		// contact page maps on click
+		$(".r27_contact-map-link").click(function(e){
+			var myLink = $(this).attr("href")
+			var targetMap = $( myLink.substr(myLink.indexOf("#")) );
+			if ( targetMap.length )
+			{
+				e.preventDefault();
+				loadMap(targetMap.children("iframe"));
+                $(".r27_map").not(targetMap).removeClass("active");
+				targetMap.addClass("active");
+                scrollToDiv(targetMap);
+			}
+		});
+		// contact page stop scrolling until clicked.
+		$(".r27_map-overlay").click(function(){
+			$(this).hide();
+		});
+        //testimonials widget
+        $(".testimonial-area .testimonial").each(function() {
+            var dataURL = $(this).attr("data-url");
+            $(this).includeFeed({
+                baseSettings: {
+                    rssURL: [dataURL || "/newsrss.aspx"]
+                },
+                templates: {
+                    itemTemplate: "<div class='testimonial-content'>{{description}}</div><h4>{{title}}</h4>",
+                },
+            });
+        });
+        /*// Resize action
+        var $window = $(window);
+            // Function to handle changes to style classes based on window width
+            function checkWidth() {
+            if ($window.width() < 992) {
+                $('.navbar .navbar-collapse > ul > li.dropdown > a').removeAttr('class');
+                }
+        }
+            // Execute on load
+            checkWidth();
+            // Bind event listener
+            $(window).resize(checkWidth);*/
+        //meet team
+        $("#teamList").includeFeed({
+            baseSettings: {
+                rssURL: ["/consultantsrss.aspx?featured=0"],
+                limit: 200,
+                addNBSP: false,
+                repeatTag: "consultant"
+            },
+            templates: {
+                itemTemplate: '<div class="col-md-3 col-sm-4 col-xs-12">\n\
+        <div class="team-description">\n\
+            <figure>\n\
+                <a href="/t/{{FriendlyURL}}" title="{{FirstName}} {{LastName}}"><img alt="{{FirstName}} {{LastName}}" src="{{ImageURL}}" /></a> </figure>\n\
+            <h3>\n\
+                <a href="/t/{{FriendlyURL}}" title="{{FirstName}} {{LastName}}">{{FirstName}} {{LastName}}</a></h3>\n\
+            <span>{{PositionTitle}}</span>\n\
+    </div></div>'
+            },
+            complete: function() {
+                // Callback
+                $("#teamList .social-media a[href=''], #teamList .social-media a[href='mailto:'],#teamList .social-media a[href='tel:']").hide();
+            }
+        });
+        //People at Premier
+        $("#team-member").includeFeed({
+            baseSettings: {
+                rssURL: ["/consultantsrss.aspx?featured=1"],
+                limit: 200,
+                addNBSP: false,
+                repeatTag: "consultant"
+            },
+            templates: {
+                itemTemplate: '<div class="col-md-3 col-sm-4 col-xs-12">\n\
+        <div class="team-description">\n\
+            <figure>\n\
+                <a href="/t/{{FriendlyURL}}" title="{{FirstName}} {{LastName}}"><img alt="{{FirstName}} {{LastName}}" src="{{ImageURL}}" /></a> </figure>\n\
+            <h3>\n\
+                <a href="/t/{{FriendlyURL}}" title="{{FirstName}} {{LastName}}">{{FirstName}} {{LastName}}</a> - {{ShortDescription}}</h3>\n\
+            <p>{{PositionTitle}}</p>\n\
+    </div></div>'
+            },
+            complete: function() {
+                // Callback
+            }
+        });
+
+          
+          
+             $("#all-events").includeFeed({
+                baseSettings: {
+                     rssURL: ["/newsrss.aspx?sortby=latest&categories=1998"],
+                    limit:20,
+                },
+                templates: {
+                    itemTemplate: '<div class="col-md-3 col-sm-4 col-xs-12">\n\
+        <div class="team-description">\n\
+            <figure>\n\
+                <a href="{{link}}"><img alt="{{title}}" src="{{imageurl}}" /></a> </figure>\n\
+            <h3>\n\
+                <a href="{{link}}">{{title}}</a></h3>\n\
+            \n\
+    </div></div>'
+                }
+            });
+
+
+
+
+
+
+
+        // Home services - carousel
+        $('.t-gallery').Gallerycarousel({
+                autoRotate: 4000,
+                visible: 4,
+                speed: 1200,
+                easing: 'easeOutExpo',
+                itemMinWidth: 250,
+                itemMargin: 30
+            })
+            // Latest Jobs widget
+		$("#myJobsList ul").each(function() {
+			var dataURL = [$(this).attr("data-url") || "/job/rss.aspx?search=1&addlocation=1"];
+			$("#myJobsList ul").includeFeed({
+				baseSettings: {
+					rssURL: dataURL,
+					addNBSP: false
+				},
+				elements: {
+					pubDate: formatDate,
+					title: 1,
+					description: 1
+				},
+				complete: function() {
+					if ($(this).children().length > 2) {
+						$(this).simplyScroll({
+							frameRate: 60
+						});
+					}
+				}
+			});
+		});
+				
+        // Equal Height
+        $.fn.eqHeights = function(options) {
+            var defaults = {
+                child: false
+            };
+            var options = $.extend(defaults, options);
+            var el = $(this);
+            if (el.length > 0 && !el.data('eqHeights')) {
+                $(window).bind('resize.eqHeights', function() {
+                    el.eqHeights();
+                });
+                el.data('eqHeights', true);
+            }
+            if (options.child && options.child.length > 0) {
+                var elmtns = $(options.child, this);
+            } else {
+                var elmtns = $(this).children();
+            }
+            var prevTop = 0;
+            var max_height = 0;
+            var elements = [];
+            elmtns.height('auto').each(function() {
+                var thisTop = this.offsetTop;
+                if (prevTop > 0 && prevTop != thisTop) {
+                    $(elements).height(max_height);
+                    max_height = $(this).height();
+                    elements = [];
+                }
+                max_height = Math.max(max_height, $(this).height());
+                prevTop = this.offsetTop;
+                elements.push(this);
+            });
+            $(elements).height(max_height);
+        };
+        // Equal Height - Usage
+        $('.service-holder').eqHeights();
+        $('.equal-height').eqHeights();
+        // if there is a hash, scroll down to it. Sticky header covers up top of content.
+        if ($(window.location.hash).length) {
+            $("html, body").animate({
+                scrollTop: $(window.location.hash).offset().top - $(".navbar-wrapper").height() - 40
+            }, 100);
+        }
+        // contact page stop scrolling until clicked.
+        $(".r27_map-overlay").click(function() {
+            $(this).hide();
+        });
+    });
+    $(window).load(function() {
+        $(".panel").find('[data-toggle]').click(function(event) {
+            var $this = $(this);
+            setTimeout(function() {
+                if ($(".navbar-toggle").is(':visible')) {
+                    $("html, body").animate({
+                        scrollTop: $this.offset().top
+                    }, 250);
+                } else {
+                    $("html, body").animate({
+                        scrollTop: $this.offset().top - $(".navbar-wrapper").height() - 40
+                    }, 250);
+                }
+            }, 500);
+        });
+        if ($(window.location.hash).find('a').length > 0) {
+            $(window.location.hash).find('a').click();
+        }
+    });
+})(jQuery);
