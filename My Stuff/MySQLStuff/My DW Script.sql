@@ -154,7 +154,6 @@ CREATE TABLE dbo.DimSource
 
 insert into dbo.DimSource values ('Viper')
 
-select  *from dbo.DimSource
 
 -------------------- DimProduct --------------------------------------------
 
@@ -202,10 +201,19 @@ DROP TABLE dbo.DimContact
 
 CREATE TABLE dbo.DimContact
 (ContactKey int identity(1,1) primary key,
-ContactName varchar(100),
+FirstName nvarchar(100),
+SecondName nvarchar(100),
 ContactBusinessKey varchar(1000),
 Source varchar(100),
-EmailAddress varchar(100),
+EmailAddress nvarchar(100),
+TelephoneNumber varchar(100),
+AddressLine1 nvarchar(100),
+AddressLine2 nvarchar(100),
+Town nvarchar(100),
+Postcode nvarchar(100),
+County nvarchar(100),
+Country varchar(100),
+SourceStatus varchar(100),
 CreateDate datetime default getdate(),
 InferredMember bit default 0,
 CurrentRecord bit default 1,
@@ -276,17 +284,43 @@ add constraint fk_FactSubEndDate FOREIGN KEY (EndDateKey ) REFERENCES DimDate(Da
 
 ---- Audit
 
-IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Audit')
+--IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'Audit')
 
 DROP TABLE dbo.Audit
 
 CREATE TABLE dbo.Audit
 (AuditID int identity(1,1) primary key,
-AuditDate datetime default getdate(),
+AuditStartDate datetime default getdate(),
+AuditEndDate datetime default getdate(),
 TableName varchar(100),
 NoOfRow int,
 Action varchar(100),
 Status varchar(100),
-Description varchar(1000))
+Description varchar(1000),
+ExecutionID varchar(100),
+PackageID varchar(100),
+ServerExecutionID varchar(100))
 
 
+--CREATE TABLE [dbo].[StagingDimContact](
+--	[ContactKey] [int] IDENTITY(1,1) NOT NULL primary key nonclustered,
+--	[FirstName] [nvarchar](100) NULL,
+--	[SecondName] [nvarchar](100) NULL,
+--	[ContactBusinessKey] [varchar](1000) NULL,
+--	[Source] [varchar](100) NULL,
+--	[EmailAddress] [nvarchar](100) NULL,
+--	[TelephoneNumber] [varchar](100) NULL,
+--	[AddressLine1] [nvarchar](100) NULL,
+--	[AddressLine2] [nvarchar](100) NULL,
+--	[Town] [nvarchar](100) NULL,
+--	[Postcode] [nvarchar](100) NULL,
+--	[County] [nvarchar](100) NULL,
+--	[Country] [varchar](100) NULL,
+--	[SourceStatus] [varchar](100) NULL,
+--	[CreateDate] [datetime] NULL,
+--	[InferredMember] [bit] NULL,
+--	[CurrentRecord] [bit] NULL,
+--	[ToDate] [datetime] NULL,
+--	[TaskID] [varchar](50) NULL,
+--	[ExecutionStartTime] [datetime] NULL
+--)

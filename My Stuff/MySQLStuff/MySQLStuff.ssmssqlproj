@@ -27,6 +27,18 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
+        <ConnectionNode Name="DESKTOP-CGRB0T0\evaluation:DESKTOP-CGRB0T0\User">
+          <Created>2019-03-05T06:05:52.0606242+00:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-CGRB0T0\evaluation</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
@@ -37,11 +49,29 @@
           <AssociatedConnUserName />
           <FullPath>Bulk Insert.sql</FullPath>
         </FileNode>
+        <FileNode Name="Check Template.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Check Template.sql</FullPath>
+        </FileNode>
         <FileNode Name="ColumnStore index.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>ColumnStore index.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateBigFile.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateBigFile.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Data Quality Service.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\evaluation:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\evaluation</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Data Quality Service.sql</FullPath>
         </FileNode>
         <FileNode Name="ErrorLogging.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
@@ -61,6 +91,18 @@
           <AssociatedConnUserName />
           <FullPath>FullText - done.sql</FullPath>
         </FileNode>
+        <FileNode Name="Fuzzy grouping.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Fuzzy grouping.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HashByte compare.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>HashByte compare.sql</FullPath>
+        </FileNode>
         <FileNode Name="Hierarchical Nodes.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
@@ -79,6 +121,24 @@
           <AssociatedConnUserName />
           <FullPath>MAXDOP.sql</FullPath>
         </FileNode>
+        <FileNode Name="Memory optimised table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Memory optimised table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Merge.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Merge.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Move table with clustered index.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Move table with clustered index.sql</FullPath>
+        </FileNode>
         <FileNode Name="My DW scratch.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\DEVELOPMENT2:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0\DEVELOPMENT2</AssociatedConnSrvName>
@@ -86,8 +146,8 @@
           <FullPath>My DW scratch.sql</FullPath>
         </FileNode>
         <FileNode Name="My DW Script.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\DEVELOPMENT2:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-CGRB0T0\DEVELOPMENT2</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>My DW Script.sql</FullPath>
         </FileNode>
@@ -109,11 +169,59 @@
           <AssociatedConnUserName />
           <FullPath>Sequence - done.sql</FullPath>
         </FileNode>
+        <FileNode Name="Sessions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\evaluation:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\evaluation</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Sessions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Shrink tempdb.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Shrink tempdb.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLCMD - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLCMD - done.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSISDB Operations.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\evaluation:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\evaluation</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISDB Operations.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSISDB Permssions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\evaluation:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\evaluation</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISDB Permssions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSISDBPermissions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\evaluation:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0\evaluation</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISDBPermissions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSISScriptTest.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISScriptTest.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SSISTransactions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISTransactions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UDT.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UDT.sql</FullPath>
         </FileNode>
         <FileNode Name="Windows function.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
