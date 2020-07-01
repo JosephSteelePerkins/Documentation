@@ -8,14 +8,14 @@ CREATE SEQUENCE Invoice_Seq
  START WITH 1
  INCREMENT BY 1
  MINVALUE 1
- MAXVALUE 1000
+ MAXVALUE 100000
  NO CYCLE; 
 
  SELECT NEXT VALUE FOR Invoice_Seq;
 
  -- use with a query
 
- select *, NEXT VALUE FOR Invoice_Seq SequenceID
+ select ProductAlternateKey, NEXT VALUE FOR Invoice_Seq SequenceID
  from AdventureWorksDW.dbo.DimProduct
 
  -- use in two tables
@@ -37,6 +37,8 @@ CREATE TABLE Fish
  select * from Meats
 
  -- or use it in the create table
+
+ drop table Fruit
 
  CREATE TABLE Fruit
 (ticket_seq iNTEGER DEFAULT NEXT VALUE FOR Invoice_Seq,

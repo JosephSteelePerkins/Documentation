@@ -43,6 +43,12 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="BCP-exporting.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>BCP-exporting.sql</FullPath>
+        </FileNode>
         <FileNode Name="Bulk Insert.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
@@ -163,6 +169,12 @@
           <AssociatedConnUserName />
           <FullPath>RegEx - done.sql</FullPath>
         </FileNode>
+        <FileNode Name="Selectivity.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Selectivity.sql</FullPath>
+        </FileNode>
         <FileNode Name="Sequence - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
@@ -180,6 +192,12 @@
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Shrink tempdb.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Size of database objects.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Size of database objects.sql</FullPath>
         </FileNode>
         <FileNode Name="SQLCMD - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>

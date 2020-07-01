@@ -1,6 +1,66 @@
--- how to do a running total
 
 use DiamondDW
+
+-- identify duplicates
+--https://www.red-gate.com/simple-talk/sql/t-sql-programming/introduction-to-t-sql-window-functions/
+
+CREATE TABLE #Duplicates(Col1 INT, Col2 CHAR(1));
+INSERT INTO #Duplicates(Col1, Col2) 
+VALUES(1,'A'),(2,'B'),(2,'B'),(2,'B'),
+	(3,'C'),(4,'D'),(4,'D'),(5,'E'),
+	(5,'E'),(5,'E');
+SELECT * FROM #Duplicates;
+
+SELECT Col1, Col2, 
+   ROW_NUMBER() OVER(PARTITION BY Col1, Col2 ORDER BY Col1) AS RowNum
+FROM #Duplicates;
+
+-- now delete them. But this doesn't work
+
+DELETE #Duplicates 
+WHERE ROW_NUMBER() OVER(PARTITION BY Col1, Col2 ORDER BY Col1) <> 1
+
+-- do this by using a CTE
+
+WITH Dupes AS (
+   SELECT Col1, Col2, 
+     ROW_NUMBER() OVER(PARTITION BY Col1, Col2 ORDER BY Col1) AS RowNum
+   FROM #Duplicates)
+DELETE Dupes 
+WHERE RowNum <> 1;
+SELECT * FROM #Duplicates;
+
+-- differences between row_number, rank and dense rank
+
+USE Adventureworks2017; --Or whichever version you have
+GO
+SELECT SalesOrderID, OrderDate, CustomerID, 
+	ROW_NUMBER() OVER(ORDER BY OrderDate) As RowNum,
+	RANK() OVER(ORDER BY OrderDate) As Rnk,
+	DENSE_RANK() OVER(ORDER BY OrderDate) As DenseRnk
+FROM Sales.SalesOrderHeader
+WHERE CustomerID = 11330;
+
+-- ntile
+
+SELECT SP.FirstName, SP.LastName,
+	SUM(SOH.TotalDue) AS TotalSales, 
+	NTILE(4) OVER(ORDER BY SUM(SOH.TotalDue)),
+	NTILE(4) OVER(ORDER BY SUM(SOH.TotalDue)) * 1000 AS Bonus
+FROM [Sales].[vSalesPerson] SP 
+JOIN Sales.SalesOrderHeader SOH 
+     ON SP.BusinessEntityID = SOH.SalesPersonID 
+WHERE SOH.OrderDate >= '2012-01-01' AND SOH.OrderDate < '2013-01-01'
+GROUP BY FirstName, LastName;
+
+-- running total
+
+
+
+
+
+
+drop table Transactions
 
 create table Transactions (TransactionID int identity(1,1), CustomerID int, MoneyOut int, TranDate datetime)
 
@@ -8,8 +68,11 @@ insert into Transactions
 values (1,10,'20190101'),(1,20,'20190102'),(1,10,'20190102'),(2,10,'20190101'),(2,20,'20190102')
 
 
-select  CustomerID, MoneyOut, TranDate, max(moneyout) over(partition by CustomerID order by trandate) as RunningTotal 
+select  CustomerID, MoneyOut, TranDate, sum(moneyout) over(partition by CustomerID order by trandate) as RunningTotal 
 FROM Transactions
+
+select *, ROW_NUMBER() over (partition by CustomerID order by trandate)
+from Transactions
 
 
 
