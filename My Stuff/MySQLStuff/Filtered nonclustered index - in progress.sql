@@ -18,7 +18,7 @@ drop index [<Name of Missing Index, sysname,>] on [Sales].[SalesOrderDetail]
 
 -- now create a filtered index
 
-drop  INDEX fIX_SalesOrderDetail_UnitPrice
+DROP  INDEX fIX_SalesOrderDetail_UnitPrice
 ON AdventureWorks2017.Sales.SalesOrderDetail
 
 CREATE NONCLUSTERED INDEX fIX_SalesOrderDetail_UnitPrice

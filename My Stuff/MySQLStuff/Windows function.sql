@@ -53,7 +53,29 @@ JOIN Sales.SalesOrderHeader SOH
 WHERE SOH.OrderDate >= '2012-01-01' AND SOH.OrderDate < '2013-01-01'
 GROUP BY FirstName, LastName;
 
--- running total
+-- running total - using Ad
+
+use [AdventureWorksDW]
+
+WITH InternetSalesGender AS
+(
+SELECT ISA.CustomerKey, C.Gender,
+ISA.SalesOrderNumber + CAST(ISA.SalesOrderLineNumber AS CHAR(1))
+AS OrderLineNumber,
+ISA.SalesAmount
+FROM dbo.FactInternetSales AS ISA
+INNER JOIN dbo.DimCustomer AS C
+ON ISA.CustomerKey = C.CustomerKey
+WHERE ISA.CustomerKey <= 12000
+)
+SELECT ISG.Gender, ISG.OrderLineNumber, ISG.SalesAmount,
+SUM(ISG.SalesAmount)
+OVER(PARTITION BY ISG.Gender
+ORDER BY ISG.OrderLineNumber
+ROWS BETWEEN UNBOUNDED PRECEDING
+AND CURRENT ROW) AS RunningTotal
+FROM InternetSalesGender AS ISG
+ORDER BY ISG.Gender, ISG.OrderLineNumber;
 
 
 
@@ -68,11 +90,18 @@ insert into Transactions
 values (1,10,'20190101'),(1,20,'20190102'),(1,10,'20190102'),(2,10,'20190101'),(2,20,'20190102')
 
 
-select  CustomerID, MoneyOut, TranDate, sum(moneyout) over(partition by CustomerID order by trandate) as RunningTotal 
+select  CustomerID, MoneyOut, TranDate, sum(moneyout) over(partition by CustomerID) 
 FROM Transactions
 
-select *, ROW_NUMBER() over (partition by CustomerID order by trandate)
-from Transactions
+select  CustomerID, MoneyOut, TranDate, sum(moneyout) over(partition by TranDate) 
+FROM Transactions
+
+select  CustomerID, MoneyOut, TranDate, sum(moneyout) over(partition by TranDate, CustomerID) 
+FROM Transactions
+order by CustomerID
+
+
+
 
 
 

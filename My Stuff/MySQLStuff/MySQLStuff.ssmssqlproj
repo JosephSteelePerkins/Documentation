@@ -61,6 +61,12 @@
           <AssociatedConnUserName />
           <FullPath>Check Template.sql</FullPath>
         </FileNode>
+        <FileNode Name="Clustered Index or not.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Clustered Index or not.sql</FullPath>
+        </FileNode>
         <FileNode Name="ColumnStore index.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
@@ -162,6 +168,12 @@
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Numbers with decimal parts.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Parition.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Parition.sql</FullPath>
         </FileNode>
         <FileNode Name="RegEx - done.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
