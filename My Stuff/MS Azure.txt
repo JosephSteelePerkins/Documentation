@@ -1,0 +1,10 @@
+-- Exercise - set up Azure sandbox
+
+# Set an admin login and password for your database
+export ADMINLOGIN='[Joe]'
+export PASSWORD='[saEar1greysa!]'
+# Set the logical SQL server name. We'll add a random string as it needs to be globally unique.
+export SERVERNAME=server$RANDOM
+export RESOURCEGROUP=learn-ecdd7796-9644-410b-8d7c-613ec7d37317
+# Set the location, we'll pull the location from our resource group.
+export LOCATION=$(az group show --name $RESOURCEGROUP | jq -r '.location')
