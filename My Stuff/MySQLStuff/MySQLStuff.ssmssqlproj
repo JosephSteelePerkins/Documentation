@@ -85,6 +85,12 @@
           <AssociatedConnUserName />
           <FullPath>Data Quality Service.sql</FullPath>
         </FileNode>
+        <FileNode Name="Diamond updating.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Diamond updating.sql</FullPath>
+        </FileNode>
         <FileNode Name="ErrorLogging.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
