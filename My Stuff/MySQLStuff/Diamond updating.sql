@@ -2,16 +2,19 @@ use DiamondDW
 go
 create schema etl
 
-drop table etl.Contact 
+drop table etl.Contact
 
-create table etl.Contact (Source varchar(3),
-MarketCode varchar(3),
-SourceContactID varchar(10),
-Email varchar(100),
-FirstName varchar(50),
-LastName varchar(50),
+select * from etl.contact 
+
+create table etl.Contact (Source nvarchar(3),
+MarketCode nvarchar(3),
+SourceContactID nvarchar(10),
+Email nvarchar(100),
+FirstName nvarchar(50),
+LastName nvarchar(50),
 SourceCreateDate datetime,
 SourceLastUpdateDate datetime,
+Postcode nvarchar(50),
 row_id int identity (1,1))
 
 go
@@ -30,7 +33,16 @@ SourceCreateDate datetime,
 SourceLastUpdateDate datetime,
 CreateDate datetime default getdate(),
 IsCurrent bit,
+Postcode varchar(50),
 row_id int identity (1,1))
+
+select postcode from dw.contact
+
+truncate table etl.Contact
+
+select count(1) from etl.Contact
+
+select * from etl.Contact
 
 -- populate etl_staging with a load of data
 
@@ -40,7 +52,7 @@ create table #temp (F1 int)
 insert into #temp values (1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1),(1)
 
 
-drop SEQUENCE SourceContactID
+drop SEQUENCE SourceContactID_Seq
 
 CREATE SEQUENCE  SourceContactID_Seq
  AS INTEGER

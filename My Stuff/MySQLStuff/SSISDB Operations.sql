@@ -28,4 +28,3 @@ left join #Status s
 on o.status = s.StatusID
  order by created_time desc
 
- select * from SSISDB.catalog.execution_
