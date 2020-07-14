@@ -71,7 +71,7 @@ CREATE SEQUENCE  SourceContactID_Seq
  'Perks' Surname,
  '01-jan-2020' SourceCreateDate,
  '20-jun-2020' LastUpdateDate
-from [AdventureWorks2017].[Sales].[SalesOrderDetail]
+from [AdventureWorks2019].[Sales].[SalesOrderDetail]
 cross join #temp -- 30 seconds, 3396876 rows
 
 -- get current records if match with etl
@@ -103,7 +103,7 @@ where isnull(c.email,'') <> isnull(ec.email,'') or
 isnull(c.FirstName,'') <> isnull(ec.FirstName,'') or
 isnull(c.LastName,'') <> isnull(ec.LastName,'') or
 isnull(c.SourceCreateDate,'') <> isnull(ec.SourceCreateDate,'') or
-isnull(c.SourceLastUpdateDate,'') <> isnull(ec.SourceLastUpdateDate,'') 
+isnull(c.SourceLastUpdateDate,'') <> isnull(ec.SourceLastUpdateDate,'') -- 1 min 21 secs
 
 
 -- prepare for insert. first, remove all the IsCurrent flags

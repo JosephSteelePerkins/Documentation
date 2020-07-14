@@ -3,7 +3,7 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="DESKTOP-CGRB0T0:DESKTOP-CGRB0T0\User">
+        <ConnectionNode Name="DESKTOP-CGRB0T0:Joseph-PC\Joseph">
           <Created>2019-02-14T10:31:48.9933755+00:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-CGRB0T0</Server>
@@ -15,7 +15,7 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
-        <ConnectionNode Name="DESKTOP-CGRB0T0\developer:DESKTOP-CGRB0T0\User">
+        <ConnectionNode Name="DESKTOP-CGRB0T0\developer:Joseph-PC\Joseph">
           <Created>2020-07-08T13:04:11.9786467+01:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-CGRB0T0\developer</Server>
@@ -27,7 +27,7 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
-        <ConnectionNode Name="DESKTOP-CGRB0T0\DEVELOPMENT2:DESKTOP-CGRB0T0\User">
+        <ConnectionNode Name="DESKTOP-CGRB0T0\DEVELOPMENT2:Joseph-PC\Joseph">
           <Created>2019-03-02T20:08:39.4680694+00:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-CGRB0T0\DEVELOPMENT2</Server>
@@ -39,10 +39,22 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
-        <ConnectionNode Name="DESKTOP-CGRB0T0\evaluation:DESKTOP-CGRB0T0\User">
+        <ConnectionNode Name="DESKTOP-CGRB0T0\evaluation:Joseph-PC\Joseph">
           <Created>2019-03-05T06:05:52.0606242+00:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-CGRB0T0\evaluation</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="joseph-pc\Developer3:Joseph-PC\Joseph">
+          <Created>2020-07-14T14:15:04.1900426+01:00</Created>
+          <Type>SQL</Type>
+          <Server>joseph-pc\Developer3</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
           <InitialDB />
@@ -98,8 +110,8 @@
           <FullPath>Data Quality Service.sql</FullPath>
         </FileNode>
         <FileNode Name="Diamond updating.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\developer:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-CGRB0T0\developer</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Diamond updating.sql</FullPath>
         </FileNode>
@@ -241,9 +253,15 @@
           <AssociatedConnUserName />
           <FullPath>SSISDB Deployments - to do.sql</FullPath>
         </FileNode>
+        <FileNode Name="SSISDB execute package.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SSISDB execute package.sql</FullPath>
+        </FileNode>
         <FileNode Name="SSISDB Operations.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0\developer:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-CGRB0T0\developer</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SSISDB Operations.sql</FullPath>
         </FileNode>
