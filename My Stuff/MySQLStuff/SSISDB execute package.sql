@@ -25,3 +25,11 @@ EXEC [SSISDB].[catalog].[set_execution_parameter_value] @execution_id,
 EXEC [SSISDB].[catalog].[start_execution] @execution_id
 
 print @execution_id
+
+select * from SSISDB.catalog.executions -- 10017
+
+select * from ssisdb.catalog.operations
+
+se
+
+select * from catalog.executable_statistics where executable_id = 10017

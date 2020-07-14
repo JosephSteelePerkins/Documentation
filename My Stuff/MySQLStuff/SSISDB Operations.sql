@@ -16,7 +16,7 @@ left join #Status s
 on e.status = s.StatusID
  order by start_time desc
 
-select * from SSISDB.catalog.execution_data_statistics where execution_id = 10081
+select * from SSISDB.catalog.execution_data_statistics where execution_id = 10015
 select * from SSISDB.catalog.execution_component_phases where execution_id = 10081
 select * from SSISDB.catalog.event_messages order by message_time desc
 
