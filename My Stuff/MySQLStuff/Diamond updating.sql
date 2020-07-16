@@ -1,13 +1,18 @@
 use DiamondDW
 go
+
+drop schema dw
 create schema etl
 
 drop table etl.Contact
+
 
 select * from etl.contact 
 
 create table etl.Contact (Source nvarchar(3),
 MarketCode nvarchar(3),
+
+
 SourceContactID nvarchar(10),
 Email nvarchar(100),
 FirstName nvarchar(50),
@@ -24,6 +29,7 @@ create schema dw
 drop table dw.Contact
 
 create table dw.Contact (Source varchar(3),
+
 MarketCode varchar(3),
 SourceContactID varchar(10),
 Email varchar(100),
