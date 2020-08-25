@@ -61,7 +61,7 @@ select  cast(NEXT VALUE FOR SourceContactID_Seq as varchar(10)) SourceContactID
 ,CreateDate
 from
 (
-select 'ELO' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + EmailAddress EmailAddress, FirstName, cast(f1 as varchar(10)) + LastName LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
+select 'ELO' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + 'b' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName FirstName,  LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
 from #adventureworks
 cross join #temp
 where f1 not in (1,10)
@@ -98,7 +98,7 @@ select  cast(NEXT VALUE FOR SourceContactID_Seq as varchar(10)) SourceContactID
 ,CreateDate
 from
 (
-select 'AMP' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + 'a' + EmailAddress EmailAddress, FirstName, cast(f1 as varchar(10)) + LastName LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDate, PostalCode
+select 'AMP' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + 'b' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName FirstName,  LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDate, PostalCode
 from #adventureworks
 cross join #temp
 where f1 not in (1,10)
@@ -123,14 +123,18 @@ having count(distinct source) > 1
 
 select * from etl.Contact where Email = 'cassie8@adventure-works.com'
 
--- load into DW
+-- eyeball the records
 
-truncate table dw.Contact
+select * from etl.Contact
+
+select * from dw.Contact where SourceContactID = '3757001'
+
+-- load into DW
 
 select count(1) from dw.Contact -- 0
 select count(1) from etl.Contact -- 1,878,500
 
-exec [etl].[sp_Load_DW_Contact]
+exec [etl].[sp_Load_DW_Contact] 200
 
 -- check insert is correct
 
@@ -142,10 +146,6 @@ and d.SourceContactID = c.SourceContactID
 and d.MarketCode = c.MarketCode
 
 
--- update iscurrent
-
-
-
 select count(1) from dw.Contact where iscurrent = 1
 
 ---------- membership
@@ -154,7 +154,9 @@ select DATEPART(yyyy,SourceCreateDate), count(1)
 from etl.Contact
 group by DATEPART(yyyy,SourceCreateDate)
 
-truncate table etl.contact
+select * from etl.contact
+
+truncate table etl.membership
 
 insert into etl.Membership(source, MarketCode, sourcecontactid, productcode, status, SourceCreateDate)
 
@@ -186,9 +188,20 @@ where c.MarketCode is null
 
 exec [etl].[sp_Load_DW_Membership]
 
--- update the IsCurrent
+-- make sure all membership has IsCurrent flagged
 
-exec [etl].[sp_Load_DW_Update_IsCurrent] --- 5 minutes 56 seconds
+select * from dw.Membership where IsCurrent <> 1
+
+-- marke sure all membership is in contact
+
+select count(1)
+from dw.Membership m
+left join dw.Contact c
+on c.source = m.source
+and c.marketcode = m.marketcode
+and c.sourcecontactid = m.sourcecontactid
+where c.source is null
+
 
 
 ------------- CREATE INCREMENTAL DATA
@@ -242,9 +255,9 @@ select count(1) from dw.Contact where IsCurrent = 1
 
 declare @looper int
 
-set @looper = 64
+set @looper = 90
 
-while @looper <= 100
+while @looper <= 200
 
 begin
 

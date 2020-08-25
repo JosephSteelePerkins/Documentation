@@ -50,3 +50,79 @@ https://www.red-gate.com/simple-talk/sql/performance/introduction-to-sql-server-
 
 -- Sparse columns -- columns that contain mostly nulls
 -- filtered indexes are good for sparse columns because you are not wasting space on values that will never be searched for
+
+
+-- try filtered index on dw.contact
+
+-- without an index
+
+select c.source, c.MarketCode, c.SourceContactID, m.ProductCode, m.Status
+from dw.contact c
+inner join dw.membership m
+on c.source = m.source
+and c.marketcode = m.marketcode
+and c.sourcecontactid = m.sourcecontactid
+and c.iscurrent = m.iscurrent
+where c.iscurrent = 1 -- 3 min 13 secs
+
+select source, MarketCode, SourceContactID
+from dw.Contact
+where IsCurrent = 1 --  55 seconds
+
+exec sp_spaceused 'dw.contact'
+
+--index_size
+--16 KB
+
+-- with non filtered index. with iscurrent first so it can be used on its own
+
+create index x_dw_contact on dw.contact (iscurrent, source, marketcode,sourcecontactid ) --- 18 min 39 secs
+
+exec sp_spaceused 'dw.contact'
+
+--index_size
+--966,912 KB
+
+
+select c.source, c.MarketCode, c.SourceContactID, m.ProductCode, m.Status
+from dw.contact c
+inner join dw.membership m
+on c.source = m.source
+and c.marketcode = m.marketcode
+and c.sourcecontactid = m.sourcecontactid
+and c.iscurrent = m.iscurrent
+where c.iscurrent = 1 -- 2 mins 11 secs
+
+select source, MarketCode, SourceContactID
+from dw.Contact
+where IsCurrent = 1 -- 37 seconds
+
+select count(1)
+from dw.Contact
+where IsCurrent = 1 -- 22 seconds
+
+drop index x_dw_contact on dw.contact
+
+
+-- with filtered index include where column
+
+create index x_contact_filtered on dw.contact (iscurrent, source, marketcode,sourcecontactid ) where iscurrent = 1 --37 seconds
+
+exec sp_spaceused 'dw.contact'
+
+--index_size
+--89,520 KB
+
+select source, MarketCode, SourceContactID
+from dw.Contact
+where IsCurrent = 1 -- 44 seconds
+
+drop index x_contact_filtered on dw.contact
+
+-- with filtered index not including where column
+
+create index x_contact_filtered on dw.contact (source, marketcode,sourcecontactid ) where iscurrent = 1 -- 1 min 49 secs
+
+select source, MarketCode, SourceContactID
+from dw.Contact
+where IsCurrent = 1 -- 28 seconds

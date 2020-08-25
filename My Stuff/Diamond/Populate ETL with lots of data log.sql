@@ -33,5 +33,7 @@ select * from dw.Contact where lastname = '11Adams_6'
 
 select * from ctl.LoadLog order by createdate desc
 
+
+
 select count(1) from dw.contact (nolock) --18,972,850
 

@@ -32,8 +32,8 @@
           <FullPath>Natural versus surrogate.sql</FullPath>
         </FileNode>
         <FileNode Name="Performance testing.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Performance testing.sql</FullPath>
         </FileNode>
