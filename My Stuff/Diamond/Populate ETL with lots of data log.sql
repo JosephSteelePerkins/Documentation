@@ -23,8 +23,15 @@ select *
 into ctl.LoadLog
 from ##log
 
+alter table ctl.LoadLog add PointInStoredProcedure varchar(100)
+
+alter table ctl.LoadLog add NumberOfRecords int
+
 select count(1) from dw.Contact (nolock) where IsCurrent = 1
 
 select * from dw.Contact where lastname = '11Adams_6'
 
-select * from ctl.LoadLog order by createdate 
+select * from ctl.LoadLog order by createdate desc
+
+select count(1) from dw.contact (nolock) --18,972,850
+

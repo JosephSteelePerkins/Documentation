@@ -5,13 +5,16 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "MySQLStuff", "MySQLStuff.ssmssqlproj", "{B29810FC-BEBE-4144-AF99-AB5FE49C3762}"
 EndProject
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Diamond", "..\Diamond\Diamond.ssmssqlproj", "{D3B8083B-784B-45CB-A2B8-13A99F53FB4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E94447B-B0EE-4E77-A18B-3E2DE704ED4F}.Default|Default.ActiveCfg = Default
 		{B29810FC-BEBE-4144-AF99-AB5FE49C3762}.Default|Default.ActiveCfg = Default
+		{4F27A790-FF60-4DDB-94E5-FCB8077D5ABA}.Default|Default.ActiveCfg = Default
+		{D3B8083B-784B-45CB-A2B8-13A99F53FB4B}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

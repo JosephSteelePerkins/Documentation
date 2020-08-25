@@ -1,9 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SqlWorkbenchSqlProject">
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Diamond">
   <Items>
-    <LogicalFolder Name="Connections" Type="2" />
-    <LogicalFolder Name="Queries" Type="0" />
-    <LogicalFolder Name="Miscellaneous" Type="3" />
-
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="joseph-pc\Developer3:Joseph-PC\Joseph">
+          <Created>2020-08-25T11:23:09.2771252+01:00</Created>
+          <Type>SQL</Type>
+          <Server>joseph-pc\Developer3</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>DiamondDW</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CreateLargeFiles.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CreateLargeFiles.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Natural versus surrogate.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Natural versus surrogate.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Performance testing.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Performance testing.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Populate ETL with lots of data log.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Populate ETL with lots of data log.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Populate ETL with lots of data.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Populate ETL with lots of data.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Populate_ctl_source.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>Populate_ctl_source.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PreDeployment.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PreDeployment.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Testing.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Testing.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
   </Items>
 </SqlWorkbenchSqlProject>

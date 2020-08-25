@@ -242,7 +242,7 @@ select count(1) from dw.Contact where IsCurrent = 1
 
 declare @looper int
 
-set @looper = 59
+set @looper = 64
 
 while @looper <= 100
 
@@ -253,13 +253,7 @@ set LastName = LastName + '_' + cast(@looper as varchar),
 SourceLastUpdateDate = getdate()
 where row_id % 10 = @looper % 10
 
-exec [etl].[sp_Load_DW_Contact]
-
-insert into ctl.LoadLog (looper,createdate,StoredProcedure) values (@looper,getdate(),'sp_Load_DW_Contact')
-
-exec [etl].[sp_Load_DW_Update_IsCurrent]
-
-insert into ctl.LoadLog (looper,createdate,StoredProcedure) values (@looper,getdate(),'sp_Load_DW_Update_IsCurrent')
+exec [etl].[sp_Load_DW_Contact] @looper
 
 set @looper = @looper + 1
 end
