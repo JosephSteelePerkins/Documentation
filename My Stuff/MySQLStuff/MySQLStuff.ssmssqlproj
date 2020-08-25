@@ -296,8 +296,8 @@
           <FullPath>UDT.sql</FullPath>
         </FileNode>
         <FileNode Name="Windows function.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CGRB0T0:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-CGRB0T0</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:joseph-pc\Developer3:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>joseph-pc\Developer3</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Windows function.sql</FullPath>
         </FileNode>

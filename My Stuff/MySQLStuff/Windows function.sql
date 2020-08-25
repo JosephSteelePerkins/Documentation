@@ -55,7 +55,15 @@ GROUP BY FirstName, LastName;
 
 -- running total - using Ad
 
-use [AdventureWorksDW]
+use [AdventureWorksDW
+
+
+
+
+
+
+
+]
 
 WITH InternetSalesGender AS
 (
