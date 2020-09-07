@@ -61,12 +61,12 @@ select  cast(NEXT VALUE FOR SourceContactID_Seq as varchar(10)) SourceContactID
 ,CreateDate
 from
 (
-select 'ELO' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + 'b' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName FirstName,  LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
+select 'EXT' Source, 'BAN' MarketCode, cast(f1 as varchar(10)) + 'be' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName  + 'e' FirstName,  LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
 from #adventureworks
 cross join #temp
 where f1 not in (1,10)
 union
-select 'ELO' Source, 'AGR' MarketCode, EmailAddress, FirstName, LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
+select 'EXT' Source, 'BAN' MarketCode, 'b' + EmailAddress, FirstName, LastName, dateadd(dd,f1,ModifiedDate) CreateDAte, PostalCode
 from #adventureworks
 cross join #temp
 where f1 in (1,10)) x
@@ -98,21 +98,21 @@ select  cast(NEXT VALUE FOR SourceContactID_Seq as varchar(10)) SourceContactID
 ,CreateDate
 from
 (
-select 'AMP' Source, 'AGR' MarketCode, cast(f1 as varchar(10)) + 'b' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName FirstName,  LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDate, PostalCode
+select 'HOT' Source, 'BAN' MarketCode, cast(f1 as varchar(10)) + 'b' + EmailAddress EmailAddress, cast(f1 as varchar(10)) + FirstName + 'h' FirstName,  LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDate, PostalCode
 from #adventureworks
 cross join #temp
 where f1 not in (1,10)
 union
-select 'AMP' Source, 'AGR' MarketCode, EmailAddress, 'a' + FirstName, LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDAte, PostalCode
+select 'HOT' Source, 'BAN' MarketCode, 'b' + EmailAddress, 'h' + FirstName, LastName, dateadd(yy,-1,dateadd(dd,f1,ModifiedDate)) CreateDAte, PostalCode
 from #adventureworks
 cross join #temp
 where f1 in (1,10)) x
 
 -- check sources
 
-select Source, count(1)
+select Source, marketcode, count(1)
 from etl.Contact
-group by Source
+group by Source, marketcode
 
 -- there should be emails that exist accross sources. are there?
 
@@ -134,7 +134,13 @@ select * from dw.Contact where SourceContactID = '3757001'
 select count(1) from dw.Contact -- 0
 select count(1) from etl.Contact -- 1,878,500
 
-exec [etl].[sp_Load_DW_Contact] 200
+select *
+from dw.Contact
+where marketcode = 'BAN'
+
+
+
+
 
 -- check insert is correct
 
@@ -145,6 +151,10 @@ on d.Source = c.Source
 and d.SourceContactID = c.SourceContactID
 and d.MarketCode = c.MarketCode
 
+select source, iscurrent, count(1)
+from dw.Contact 
+where Source in ('hot','ext')
+group by source, IsCurrent
 
 select count(1) from dw.Contact where iscurrent = 1
 
@@ -160,19 +170,19 @@ truncate table etl.membership
 
 insert into etl.Membership(source, MarketCode, sourcecontactid, productcode, status, SourceCreateDate)
 
-select source, MarketCode, SourceContactID, 'FWCOM' ProductCode, 'Active' Status, SourceCreateDate
+select source, MarketCode, SourceContactID, 'BACOM' ProductCode, 'Active' Status, SourceCreateDate
 from etl.Contact
 where DATEPART(yyyy,SourceCreateDate) <> '2012'
 union
-select source, MarketCode, SourceContactID, 'FWCOM' ProductCode, 'Inactive' Status, SourceCreateDate
+select source, MarketCode, SourceContactID, 'BACOM' ProductCode, 'Inactive' Status, SourceCreateDate
 from etl.Contact
 where DATEPART(yyyy,SourceCreateDate) = '2012'
 union
-select source, MarketCode, SourceContactID, 'FWGAP' ProductCode, 'Active' Status, SourceCreateDate
+select source, MarketCode, SourceContactID, 'BAPAT' ProductCode, 'Active' Status, SourceCreateDate
 from etl.Contact
 where DATEPART(yyyy,SourceCreateDate) <> '2013'
 union
-select source, MarketCode, SourceContactID, 'FWGAP' ProductCode, 'Inactive' Status, SourceCreateDate
+select source, MarketCode, SourceContactID, 'BAPAT' ProductCode, 'Inactive' Status, SourceCreateDate
 from etl.Contact
 where DATEPART(yyyy,SourceCreateDate) = '2013'
 
@@ -186,11 +196,13 @@ and m.SourceContactID = c.SourceContactID
 and m.MarketCode = c.MarketCode
 where c.MarketCode is null
 
-exec [etl].[sp_Load_DW_Membership]
+exec [etl].[sp_Load_DW_Membership] 1
 
 -- make sure all membership has IsCurrent flagged
 
-select * from dw.Membership where IsCurrent <> 1
+select iscurrent, count(1)
+from dw.Membership 
+group by IsCurrent
 
 -- marke sure all membership is in contact
 
@@ -221,7 +233,7 @@ into etl.contact_bk
 from etl.contact
 
 
---- contact
+-------------- contact
 
 select count(1) from etl.contact -- 1,878,500
 
@@ -255,9 +267,9 @@ select count(1) from dw.Contact where IsCurrent = 1
 
 declare @looper int
 
-set @looper = 90
+set @looper = 1
 
-while @looper <= 200
+while @looper <= 10
 
 begin
 
@@ -270,6 +282,8 @@ exec [etl].[sp_Load_DW_Contact] @looper
 
 set @looper = @looper + 1
 end
+
+select * from etl.Contact
 
 select SourceLastUpdateDate, count(1)
 from etl.Contact
@@ -314,4 +328,28 @@ from etl.contact c
 inner join etl.contact_bk cb
 on c.row_id = cb.row_id
 where c.lastname <> cb.lastname
+
+
+
+
+-------------- membership
+
+truncate table etl.membership
+
+insert into etl.membership (source, marketcode, sourcecontactid, productcode, status, sourcecreatedate, startdate, enddate)
+select source, marketcode, sourcecontactid, productcode, status, sourcecreatedate, startdate, enddate
+from dw.membership
+
+select source, sourcecontactid, marketcode, productcode
+from etl.membership
+group by source, sourcecontactid, marketcode, productcode
+having count(1) > 1
+
+
+select status, source, marketcode, count(1)
+from etl.membership
+group by status, source, marketcode
+order by 1,2,3
+
+
 
