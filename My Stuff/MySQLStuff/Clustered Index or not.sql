@@ -112,8 +112,8 @@ select * from [Sales].[SalesOrderDetail_NoClustered] -- 36 seconds
 
 set statistics time off
 
-select * from [Sales].[SalesOrderDetail_Clustered] where Unitprice > 5 -- 37 seconds
-select * from [Sales].[SalesOrderDetail_NoClustered] where Unitprice > 5 -- 35 seconds
+select Unitprice from [Sales].[SalesOrderDetail_Clustered] where Unitprice > 5 -- 37 seconds
+select Unitprice from [Sales].[SalesOrderDetail_NoClustered] where Unitprice > 5 -- 35 seconds
 
 -- how big is the table?
 
@@ -193,3 +193,23 @@ select * from [Sales].[SalesOrderDetail_PrimaryKeyAndClustered]
 
 insert into [Sales].[SalesOrderDetail_PrimaryKeyAndClustered]
 select * from #t2 -- 
+
+
+
+
+----------- compare creating indexes on the two tables
+
+
+exec sp_spaceused 'Sales.SalesOrderDetail_Clustered'
+
+--name	rows	reserved	data	index_size	unused
+--SalesOrderDetail_Clustered	2426340             	201160 KB	200096 KB	904 KB	160 KB
+
+exec sp_spaceused 'Sales.SalesOrderDetail_NoClustered'
+
+--name	rows	reserved	data	index_size	unused
+--SalesOrderDetail_NoClustered	2426340             	197320 KB	197280 KB	8 KB	32 KB
+
+create index x_SalesOrderDetail_Clustered_Nonclustered on Sales.SalesOrderDetail_Clustered (Unitprice)
+
+create index x_SalesOrderDetail_noClustered_Nonclustered on Sales.SalesOrderDetail_NoClustered (Unitprice)
